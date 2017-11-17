@@ -11,9 +11,7 @@
   "dependencies": {
     "@uirouter/angularjs": "^1.0.10",
     "angular": "^1.6.6",
-    "bootstrap": "^4.0.0-beta.2",
-    "jquery": "^1.9.1",
-    "popper.js": "^1.12.3"
+    "bootstrap": "^4.0.0-beta.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
