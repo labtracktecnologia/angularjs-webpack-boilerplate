@@ -1,5 +1,28 @@
-<div>
-    <form>
-        <input type="text" placeholder="Teste">
-    </form>
+<div class="container-fluid">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-8">
+            <h2 class="title">{{vm.title}}</h2>
+            <form>
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" ng-model="vm.record.documento" class="form-control">
+                    <small class="form-text text-muted">Digite um CPF ou CNPJ válido.</small>
+                </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" ng-model="vm.record.nome" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" ng-model="vm.record.email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" ng-model="vm.record.telefone" class="form-control">
+                </div>
+                <button ng-click="vm.save()" type="button" class="btn btn-primary btn-lg">Salvar Registro</button>
+                <a ui-sref="cliente.list" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </div>
 </div>

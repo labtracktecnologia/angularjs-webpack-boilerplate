@@ -1,8 +1,29 @@
-<div>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Outro</td>
-        </tr>
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input ng-model="vm.filter" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
+        </form>
+        <a class="btn btn-outline-info" ui-sref="cliente.new">Novo registro</a>
+    </nav>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Documento</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rec in vm.records">
+                <th scope="row">{{rec.documento}}</th>
+                <td>{{rec.nome}}</td>
+                <td>{{rec.email}}</td>
+                <td>{{rec.telefone}}</td>
+                <td><a ui-sref="cliente.edit({id: rec._id})">Editar</a></td>
+            </tr>
+        </tbody>
     </table>
 </div>
