@@ -1,18 +1,28 @@
 export default class ListController {
 
-    constructor($http) {
-        this.filter = '';
-        this.records = [];
-        this._http = $http;
-        this.load();
+    constructor(ClienteServico) {
+        this.filter = ''
+        this.records = []
+        this._service = ClienteServico
+        this.load()
     }
 
     load() {
-        this._http.get('http://localhost:8080/api/clientes').
-          then((response) => {
-              this.records = response.data;
-          });
+        this._service.findAll()
+          .then(data => {
+              this.records = data
+          })
+          .catch(error => {
+              console.log(error)
+          })
+    }
+
+    excluir(id) {
+        this._service.remove(id)
+            .then(response => {
+                this.load()
+            })
     }
 }
 
-ListController.$inject = ['$http']
+ListController.$inject = ['ClienteServico']
