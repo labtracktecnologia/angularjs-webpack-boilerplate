@@ -1,23 +1,28 @@
 export default class ListController {
 
-  constructor($http) {
+  constructor(ClienteServico) {
     this.records = []
-    this._http = $http
+    this._servico = ClienteServico
     this.load()
   }
 
   load() {
-    this._http.get('http://localhost:8080/Pedidex-web/api/clientes')
-      .then(response => {
-        this.records = response.data
+    this._servico.findAll()
+      .then(data => {
+        this.records = data
       }).catch(erro => {
         console.log(erro)
       })
   }
 
   excluir(id) {
-    alert(`Registro ${id} excluído com sucesso!!!`)
+    if (confirm('Deseja realmente apagar o Registro?')) {
+      this._servico.remove(id)
+        .then(response => {
+          this.load()
+        })
+    }
   }
 }
 
-ListController.$inject = ['$http']
+ListController.$inject = ['ClienteServico']

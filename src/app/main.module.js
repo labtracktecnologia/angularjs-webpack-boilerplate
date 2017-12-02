@@ -6,6 +6,9 @@ import { clienteConfig } from './clientes/config';
 
 export const appModule = 'app';
 
-angular.module(appModule, [uiRouter])
-.config(mainConfig)
-.config(clienteConfig);
+const modulo = angular.module(appModule, [uiRouter])
+
+modulo.config(mainConfig(modulo))
+      .config(clienteConfig(modulo))
+      //.config(produtoConfig(modulo))
+      //.config(pedidoConfig(modulo))
