@@ -1,8 +1,35 @@
 <div>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Outro</td>
-        </tr>
-    </table>
+    <div>
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <a class="navbar-brand">Clientes</a>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
+                <a class="btn btn-outline-info mx-2" ui-sref="cliente.new">Adicionar Cliente</a>
+            </form>
+        </nav>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="rec in vm.records">
+                    <th scope="row">{{rec.id}}</th>
+                    <td>{{rec.documento}}</td>
+                    <td>{{rec.nome}}</td>
+                    <td>{{rec.email}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-success" ui-sref="cliente.edit({id: rec.id})">Editar</a>
+                        <a class="btn btn-sm btn-danger" href="javascript:void()" ng-click="vm.excluir(rec.id)">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
