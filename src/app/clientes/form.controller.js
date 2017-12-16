@@ -1,9 +1,10 @@
 export default class FormController {
 
-  constructor($stateParams, $state, ClienteServico) {
+  constructor($stateParams, $state, ClienteServico, Notification) {
     this.record = {}
     this.titulo = 'Adicionando cliente'
 
+    this._notify = Notification
     this._servico = ClienteServico
     this._state = $state
 
@@ -23,12 +24,12 @@ export default class FormController {
   salvar() {
     this._servico.save(this.record)
       .then(response => {
-        alert(`Cliente ${response.status == 201 ? 'inserido' : 'atualizado'} com sucesso`)
+        this._notify.success(`Cliente ${response.status == 201 ? 'inserido' : 'atualizado'} com sucesso`)
         this._state.go('cliente.list')
       }).catch(erro => {
-        console.log(erro)
+        this._notify.error(erro.message)
       })
   }
 }
 
-FormController.$inject = ['$stateParams', '$state', 'ClienteServico']
+FormController.$inject = ['$stateParams', '$state', 'ClienteServico', 'Notification']

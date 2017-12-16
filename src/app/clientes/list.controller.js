@@ -35,6 +35,7 @@ export default class ListController {
       }
       return Promise.reject({message:'Exclusão cancelada!!!'})
     }).then(data => {
+      this.load()
       this._notify.success('Cliente excluído com sucesso!')
     }).catch(erro => {
       this._notify.error(erro.message)
