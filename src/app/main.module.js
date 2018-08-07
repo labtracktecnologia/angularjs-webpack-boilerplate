@@ -4,8 +4,8 @@ import { default as uiRouter } from '@uirouter/angularjs';
 import { mainConfig } from './main/config';
 import { clienteConfig } from './clientes/config';
 
-export const appModule = 'app';
+export const name = 'app';
 
-angular.module(appModule, [uiRouter])
-.config(mainConfig)
-.config(clienteConfig);
+angular.module(name, [uiRouter])
+  .config(mainConfig)
+  .config(clienteConfig);
